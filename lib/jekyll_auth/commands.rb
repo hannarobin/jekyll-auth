@@ -3,7 +3,7 @@
 class JekyllAuth
   class Commands
     FILES = %w(Rakefile config.ru .gitignore .env).freeze
-    VARS  = %w(client_id client_secret team_id org_name).freeze
+    VARS  = %w(client_id client_secret).freeze
 
     def self.source
       @source ||= File.expand_path("../../templates", File.dirname(__FILE__))
@@ -45,7 +45,9 @@ class JekyllAuth
     end
 
     def self.env_var_set?(var)
-      !ENV[var].to_s.blank?
+      puts var    
+      puts ENV[var]
+      ENV[var] != ""
     end
 
     def self.init_repo

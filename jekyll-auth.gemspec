@@ -5,11 +5,11 @@ require "./lib/jekyll_auth/version"
 Gem::Specification.new do |s|
   s.name                  = "jekyll-auth"
   s.version               = JekyllAuth::VERSION
-  s.summary               = "A simple way to use GitHub OAuth to serve a protected jekyll site to your GitHub organization"
-  s.description           = "A simple way to use GitHub OAuth to serve a protected jekyll site to your GitHub organization."
-  s.authors               = "Ben Balter"
-  s.email                 = "ben@balter.com"
-  s.homepage              = "https://github.com/benbalter/jekyll-auth"
+  s.summary               = "A simple way to use Google OAuth2 to serve a protected jekyll site"
+  s.description           = "A simple way to use Google OAuth2 to serve a protected jekyll site"
+  s.authors               = "Robin Altena"
+  s.email                 = "altenarobin@gmail.com"
+  s.homepage              = "https://github.com/murrx/jekyll-auth"
   s.license               = "MIT"
   s.files                 = `git ls-files`.split("\n")
   s.test_files            = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rake", "~> 10.3"
   s.add_dependency "safe_yaml", "~> 1.0"
   s.add_dependency "sinatra-index", "~> 0.0"
-  s.add_dependency "sinatra_auth_github", "~> 1.1"
+  s.add_dependency "mail", "~>2.6"
   s.add_development_dependency "pry", "~> 0.10"
   s.add_development_dependency "rack-test", "~> 0.6"
   s.add_development_dependency "rspec", "~> 3.1"
