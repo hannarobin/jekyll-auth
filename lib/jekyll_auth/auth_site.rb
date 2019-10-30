@@ -37,18 +37,7 @@ class JekyllAuth
 
     use Rack::Logger
 
-#    before do
-      #pass if request.path_info.start_with?('/auth/google_oauth2')
-#      pass if whitelisted?
-#      authenticate
-#    end
     get '/' do
-      erb :index
-#      authenticate
-#      'hello'
-    end
-
-    get "/auth" do
      redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,:scope => SCOPES,:access_type => "offline")
     end
 
@@ -60,7 +49,7 @@ class JekyllAuth
 
       # parsed is a handy method on an OAuth2::Response object that will
       # intelligently try and parse the response.body
-      @email = access_token.get('https://www.googleapis.com/userinfo/email?alt=json').parsed
+      @email = access_token.get('https://www.googleapis.com/oauth2/v2/userinfo').parsed
       erb :success
     end
 
