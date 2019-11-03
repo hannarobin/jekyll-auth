@@ -3,3 +3,5 @@ _site
 .env
 /Gemfile.lock
 tmp
+whitelisted_email.json
+sinatra.log
