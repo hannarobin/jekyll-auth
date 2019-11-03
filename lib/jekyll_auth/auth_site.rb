@@ -38,10 +38,6 @@ class JekyllAuth
     use Rack::Session::Cookie,       :http_only => true,
                                      :secret    => ENV["SESSION_SECRET"] || SecureRandom.hex
 
-    get '*' do
-      authenticate
-      pass
-    end
 
     def authenticate
       unless session["user"]
@@ -66,6 +62,11 @@ class JekyllAuth
       else
         'forbidden'
       end
+    end
+
+    get '*' do
+      authenticate
+      pass
     end
 
     def isWhitelisted(email)
