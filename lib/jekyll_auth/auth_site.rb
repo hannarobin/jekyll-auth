@@ -49,7 +49,7 @@ class JekyllAuth
         url = session['google-auth-redirect'] || to("/")
         redirect url
       else
-        'forbidden'
+	redirect to("/401.html")
       end
     end
 
