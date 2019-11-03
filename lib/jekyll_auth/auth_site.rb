@@ -40,6 +40,7 @@ class JekyllAuth
 
     get '/' do
       authenticate
+      pass
     end
 
     def authenticate
