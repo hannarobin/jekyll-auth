@@ -40,8 +40,6 @@ class JekyllAuth
 
     get '/' do
       authenticate
-      'welcome'
-#      logger.info(session["email"])
     end
 
     def authenticate
