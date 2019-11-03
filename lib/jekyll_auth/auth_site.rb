@@ -38,7 +38,7 @@ class JekyllAuth
     use Rack::Session::Cookie,       :http_only => true,
                                      :secret    => ENV["SESSION_SECRET"] || SecureRandom.hex
 
-    get '/' do
+    get '*' do
       authenticate
       pass
     end
