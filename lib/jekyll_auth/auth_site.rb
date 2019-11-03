@@ -27,9 +27,7 @@ end
 
 class JekyllAuth
   class AuthSite < Sinatra::Base
-    configure :production, :development do
-      enable :logging
-    end
+    include JekyllAuth::Helpers
     configure :production do
       require "rack-ssl-enforcer"
       use Rack::SslEnforcer if JekyllAuth.ssl?
@@ -40,10 +38,11 @@ class JekyllAuth
 
 
     def authenticate
-      unless session["user"]
-        session['google-auth-redirect'] = request.path
-        redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,:scope => SCOPES,:access_type => "offline")
-      end
+      redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,:scope => SCOPES,:access_type => "offline")
+    end
+
+    get '/google-auth' do
+      authenticate
     end
 
     get '/oauth2callback' do
@@ -65,7 +64,11 @@ class JekyllAuth
     end
 
     get '*' do
-      authenticate
+      pass if whitelisted?
+      unless session["user"]
+        session['google-auth-redirect'] = request.path
+        redirect to("/login.html")
+      end
       pass
     end
 
