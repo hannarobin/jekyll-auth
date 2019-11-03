@@ -28,6 +28,9 @@ Gem::Specification.new do |s|
   s.add_dependency "safe_yaml", "~> 1.0"
   s.add_dependency "sinatra-index", "~> 0.0"
   s.add_dependency "mail", "~>2.6"
+  s.add_dependency "json"
+  s.add_dependency "oauth2"
+ 
   s.add_development_dependency "pry", "~> 0.10"
   s.add_development_dependency "rack-test", "~> 0.6"
   s.add_development_dependency "rspec", "~> 3.1"
