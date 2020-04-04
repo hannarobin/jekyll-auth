@@ -2,7 +2,7 @@
 require 'json'
 
 EMAIL_FILE = File.read('whitelisted_email.json')
-WHITELISTED_EMAILS = JSON.parse(EMAIL_FILE)["emails"]
+WHITELISTED_EMAILS = JSON.parse(EMAIL_FILE)["emails"].map(&:downcase)
 class JekyllAuth
   module Helpers
 
@@ -14,7 +14,7 @@ class JekyllAuth
       })
 end
     def isWhitelisted(email)
-	    return WHITELISTED_EMAILS.include? email 
+      return WHITELISTED_EMAILS.include? email.downcase
     end
     def whitelisted?
       return true if request.path_info == "/logout"
